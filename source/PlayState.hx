@@ -8839,11 +8839,6 @@ class PlayState extends MusicBeatState
 				{
 					if (storyDifficulty >= 1) // iirc it plays the old version of last reel on normal and above so
 					{
-						pushStepEvent(1, function()
-						{
-							butchersActive = true;
-						});
-
 						pushStepEvent(80, function()
 						{
 							overrideDadAnim = false;
@@ -9262,12 +9257,6 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(this, {defaultCamZoom: oldDefaultCamZoom - 0.25}, 4);
 						changeNoteSpeed(songScrollSpeed + 0.2, 0.2);
 					});
-					pushStepEvent(1350, function()
-					{
-						butchersActive = true;
-						FlxTween.tween(attackHud, {alpha: 0.6}, 1, {ease: FlxEase.quartInOut});
-						FlxTween.tween(dodgeHud, {alpha: 0.6}, 1, {ease: FlxEase.quartInOut});
-					});
 					pushStepEvent(1680, function()
 					{
 						// storm
@@ -9299,8 +9288,6 @@ class PlayState extends MusicBeatState
 					});
 					pushStepEvent(2128, function()
 					{
-						butchersActive = true;
-
 						jumpscareTimerAmt = FlxG.random.int(jumpscareTimerMin, jumpscareTimerMax);
 
 						FlxTween.tween(attackHud, {alpha: 0.6}, 1, {ease: FlxEase.quartInOut});
@@ -9320,10 +9307,6 @@ class PlayState extends MusicBeatState
 						fire.animation.play('fire', true);
 						FlxTween.tween(fire, {y: -227}, 7.68, {ease: FlxEase.sineOut});
 						changeNoteSpeed(songScrollSpeed + 0.2, 0.2);
-					});
-					pushStepEvent(3248, function()
-					{
-						butchersActive = true;
 					});
 					pushStepEvent(3912, function()
 					{
