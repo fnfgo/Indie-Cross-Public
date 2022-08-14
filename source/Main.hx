@@ -71,8 +71,6 @@ class Main extends Sprite
 	{
 		super();
 
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
-
 		if (stage != null)
 		{
 			init();
