@@ -2463,6 +2463,11 @@ class PlayState extends MusicBeatState
 			case 'last-reel':
 				add(attackHud);
 				add(dodgeHud);
+			case 'despair':
+				add(attackHud);
+				add(dodgeHud);
+				attackHud.alpha = 0.0001;
+				dodgeHud.alpha = 0.0001;
 			case 'sansational' | 'burning-in-hell':
 				add(attackHud);
 				add(dodgeHud);
@@ -5223,7 +5228,7 @@ class PlayState extends MusicBeatState
 		{
 			useAttackSlot();
 		}
-		else if ((SONG.song.toLowerCase() == 'last-reel') && PlayStateChangeables.botPlay)
+		else if ((SONG.song.toLowerCase() == 'last-reel' || SONG.song.toLowerCase() == 'despair') && PlayStateChangeables.botPlay)
 		{
 			if ((currentStriker != null || currentPiper != null) && attackCooldown == 0)
 			{
@@ -5421,7 +5426,7 @@ class PlayState extends MusicBeatState
 				}
 		}*/
 
-		if (SONG.song.toLowerCase() == 'satanic-funkin')
+		if (SONG.song.toLowerCase() == 'satanic-funkin' || SONG.song.toLowerCase() == 'despair')
 		{
 			if (boyfriend.overlaps(devilGroup))
 			{
@@ -5548,7 +5553,7 @@ class PlayState extends MusicBeatState
 		var leftx = 120;
 		var rightx = 35;
 
-		if ((SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1))
+		if ((SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1) || SONG.song.toLowerCase() == "despair")
 		{
 			// strikers and pipers
 
@@ -5557,7 +5562,29 @@ class PlayState extends MusicBeatState
 				&& songStarted
 				&& butchersActive) // every 6 seconds
 			{
-				if (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1)
+				if (SONG.song.toLowerCase() == "despair")
+				{
+					currentPiper = new BendyBoy(boyfriend.x + 1110, boyfriend.y + righty, "piper", true);
+					// currentPiper.setGraphicSize(Std.int(currentPiper.width * 0.7));
+					bendyBoyGroup.add(currentPiper);
+					piperTween = FlxTween.tween(currentPiper, {x: boyfriend.x + 250 + rightx + 70}, 4, {
+						onComplete: function(tween:FlxTween)
+						{
+							lastPiperSpawn = Math.floor(FlxG.sound.music.time);
+							if (currentPiper != null)
+							{
+								currentPiper.attacking = true;
+								currentPiper.playAnim("idle");
+
+								if (boyfriend.animation.curAnim.name == 'attackRight')
+								{
+									hitPiper();
+								}
+							}
+						}
+					});
+				}
+				else if (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1)
 				{
 					currentPiper = new BendyBoy(boyfriend.x + 1100, boyfriend.y - 45 + righty, "piper", false);
 					bendyBoyGroup.add(currentPiper);
@@ -5643,7 +5670,29 @@ class PlayState extends MusicBeatState
 					strikeraddtime = 3000;
 				}
 
-				if (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1)
+				if (SONG.song.toLowerCase() == "despair")
+				{
+					currentStriker = new BendyBoy(dad.x - 1400, boyfriend.y - 45 + lefty + 85, "striker", true);
+					// currentStriker.setGraphicSize(Std.int(currentPiper.width * 0.8));
+					bendyBoyGroup.add(currentStriker);
+					strikerTween = FlxTween.tween(currentStriker, {x: boyfriend.x - 750 + leftx + 80}, 8, {
+						onComplete: function(tween:FlxTween)
+						{
+							lastStrikerSpawn = Math.floor(FlxG.sound.music.time);
+							if (currentStriker != null)
+							{
+								currentStriker.attacking = true;
+								currentStriker.playAnim("idle");
+
+								if (boyfriend.animation.curAnim.name == 'attackLeft')
+								{
+									hitStriker();
+								}
+							}
+						}
+					});
+				}
+				else if (SONG.song.toLowerCase() == "last-reel" && storyDifficulty >= 1)
 				{
 					currentStriker = new BendyBoy(dad.x - 1400, boyfriend.y + lefty, "striker", false);
 					bendyBoyGroup.add(currentStriker);
@@ -9213,6 +9262,12 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(this, {defaultCamZoom: oldDefaultCamZoom - 0.25}, 4);
 						changeNoteSpeed(songScrollSpeed + 0.2, 0.2);
 					});
+					pushStepEvent(1350, function()
+					{
+						butchersActive = true;
+						FlxTween.tween(attackHud, {alpha: 0.6}, 1, {ease: FlxEase.quartInOut});
+						FlxTween.tween(dodgeHud, {alpha: 0.6}, 1, {ease: FlxEase.quartInOut});
+					});
 					pushStepEvent(1680, function()
 					{
 						// storm
@@ -9242,6 +9297,17 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(despairBG, {alpha: 1}, 2, {ease: FlxEase.expoOut});
 						FlxTween.tween(this, {defaultCamZoom: oldDefaultCamZoom - 0.25}, 4);
 					});
+					pushStepEvent(2128, function()
+					{
+						butchersActive = true;
+
+						jumpscareTimerAmt = FlxG.random.int(jumpscareTimerMin, jumpscareTimerMax);
+
+						FlxTween.tween(attackHud, {alpha: 0.6}, 1, {ease: FlxEase.quartInOut});
+						FlxTween.tween(dodgeHud, {alpha: 0.6}, 1, {ease: FlxEase.quartInOut});
+
+						changeNoteSpeed(songScrollSpeed + 0.2, 0.2);
+					});
 					pushStepEvent(3024, function()
 					{
 						inkStorm();
@@ -9254,6 +9320,10 @@ class PlayState extends MusicBeatState
 						fire.animation.play('fire', true);
 						FlxTween.tween(fire, {y: -227}, 7.68, {ease: FlxEase.sineOut});
 						changeNoteSpeed(songScrollSpeed + 0.2, 0.2);
+					});
+					pushStepEvent(3248, function()
+					{
+						butchersActive = true;
 					});
 					pushStepEvent(3912, function()
 					{
@@ -10279,6 +10349,9 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song.toLowerCase() == 'satanic-funkin' && curBeat % 24 == 0)
 			summonDevil();
+
+		if ((SONG.song.toLowerCase() == 'despair' && curBeat % 24 == 0) && butchersActive)
+			summonFisher();
 
 		if (SONG.song.toLowerCase() == 'devils-gambit' && curBeat % 48 == 0)
 		{
