@@ -7883,8 +7883,8 @@ class PlayState extends MusicBeatState
 				case 'shit':
 					score = -300;
 					healthincrease = -0.2;
-					if (FlxG.save.data.accuracyMod == 0)
-						totalNotesHit -= 1;
+					/*if (FlxG.save.data.accuracyMod == 0)
+						totalNotesHit -= 1;*/
 				case 'bad':
 					daRating = 'bad';
 					score = 0;
