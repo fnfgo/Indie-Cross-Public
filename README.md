@@ -29,26 +29,12 @@ This game was made with love to Newgrounds and its community. Extra love to Tom 
  - [House House](https://twitter.com/house_house_)
 
 ### Adobe Animate CC - Texture Atlas for OpenFL
- - [mathieuanthoine](https://github.com/mathieuanthoine)
+ - [mathieuanthoine](https://github.com/mathieuanthoine) 
+ 
+### Indie cross HTML - Indie cross html support
+ -[Memehoovy](https://github.com/MemeHoovy)
+ -[LeviXDD](https://github.com/LEVIXDDLMAO)
 
 
 # Installation
-1. [Install Haxe](https://haxe.org/download)
-2. Install `git`.
-	- Windows: install from the [git-scm](https://git-scm.com/downloads) website.
-	- Linux: install the `git` package: `sudo apt install git` (ubuntu), `sudo pacman -S git` (arch), etc... (you probably already have it)
-3. Install and set up the necessary libraries:
-	- `haxelib install lime`
-	- `haxelib install openfl`
-	- `haxelib install flixel`
-	- `haxelib run lime setup`
-	- `haxelib run lime setup flixel`
-	- `haxelib install flixel-tools`
-	- `haxelib run flixel-tools setup`
-	- `haxelib install flixel-addons`
-	- `haxelib install flixel-ui`
-	- `haxelib install linc_luajit`
-	- `haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc`
-	- `haxelib git systools https://github.com/haya3218/systools`
-	- `haxelib run lime rebuild systools windows`
-	- `haxelib git tentools https://github.com/TentaRJ/tentools`
+ Dont need this will have a root with the html game
