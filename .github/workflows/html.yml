@@ -30,8 +30,12 @@ jobs:
       - name: Compile
         run: haxelib run lime build html5
 
+      - name: Create Version Tag #this should fix artifact issues
+        run: echo "${{github.run_id}}" > VERSION
+      - name: Compile
+        run: haxelib run lime build html5 --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: htmlBuild
+          name: html5Build
           path: export/release/html5/bin
