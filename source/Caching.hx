@@ -1,13 +1,14 @@
 package;
 
 import Shaders.FXHandler;
-import GameJolt.GameJoltAPI;
+// import GameJolt.GameJoltAPI;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
+import flash.system.System;
 #if sys
 import sys.thread.Thread;
 #end
@@ -71,8 +72,8 @@ class Caching extends MusicBeatState
 		Application.current.onExit.add(function(exitCode)
 		{
 			FlxG.save.flush();
-			DiscordClient.shutdown();
-			Sys.exit(0);
+			#if cpp DiscordClient.shutdown(); #end
+			System.exit(0);
 		});
 
 		FlxG.sound.muteKeys = null;
@@ -117,8 +118,8 @@ class Caching extends MusicBeatState
 
 		}*/
 
-		GameJoltAPI.connect();
-		GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);
+		// GameJoltAPI.connect();
+		// GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);
 
 		FlxG.worldBounds.set(0, 0);
 

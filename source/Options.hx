@@ -1,7 +1,7 @@
 package;
 
-import GameJolt.GameJoltAPI;
-import GameJolt.GameJoltLogin;
+// import GameJolt.GameJoltAPI;
+// import GameJolt.GameJoltLogin;
 import Shaders.FXHandler;
 import flixel.FlxG;
 import flixel.util.FlxColor;
@@ -937,7 +937,7 @@ class CustomizeGameplay extends Option
 	}
 }
 
-class LogInGJ extends Option
+/*class LogInGJ extends Option
 {
 	public function new(desc:String)
 	{
@@ -978,7 +978,7 @@ class LogOutGJ extends Option
 	{
 		return "Log Out of Gamejolt";
 	}
-}
+}*/
 
 class OffsetMenu extends Option
 {

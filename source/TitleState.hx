@@ -117,9 +117,6 @@ class TitleState extends MusicBeatState
 		blackOverlay.scrollFactor.set();
 		// add(blackOverlay);
 
-		vidSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
-		add(vidSpr);
-
 		startIntro();
 	}
 

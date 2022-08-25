@@ -53,6 +53,7 @@ import openfl.media.Sound;
 import openfl.ui.KeyLocation;
 import openfl.ui.Keyboard;
 import openfl.utils.Assets;
+import flash.system.System;
 
 using StringTools;
 
@@ -3240,14 +3241,15 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				if (FileSystem.exists(Paths.video(cutPrefix + '/' + storyIndex + suffix)))
+				/*if (FileSystem.exists(Paths.video(cutPrefix + '/' + storyIndex + suffix)))
 				{
 					camGame.visible = false;
 					camHUD.visible = false;
 					camOVERLAY.visible = false;
 
 					checkCut((cutPrefix + '/' + storyIndex + suffix).toString(), startCountdown);
-				}
+				}*/
+				startCountdown();
 				else
 				{
 					startCountdown();
@@ -5054,13 +5056,13 @@ class PlayState extends MusicBeatState
 					player3.onpause(false);
 			}
 
-			if (gameVideos != null)
+			/*if (gameVideos != null)
 			{
 				for (i in 0...gameVideos.length)
 				{
 					gameVideos[i].bitmap.resume();
 				}
-			}
+			}*/
 
 			if (!specialIntro)
 			{
@@ -6233,7 +6235,9 @@ class PlayState extends MusicBeatState
 		{
 			cannotDie = true;
 			transitioningToState = true;
+			#if cpp
 			DiscordClient.changePresence("Chart Editor", null, null, true);
+			#end
 			FlxG.switchState(new ChartingState());
 			Application.current.window.onFocusOut.remove(onWindowFocusOut);
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -6348,7 +6352,7 @@ class PlayState extends MusicBeatState
 				trace(cannotDie);
 			}
 
-			if (FlxG.keys.justPressed.C && MainMenuState.debugTools)
+			/*if (FlxG.keys.justPressed.C && MainMenuState.debugTools)
 			{
 				@:privateAccess
 				for (key in FlxG.bitmap._cache.keys())
@@ -6358,7 +6362,7 @@ class PlayState extends MusicBeatState
 						trace('key: ' + key + " is on mem");
 					}
 				}
-			}
+			}*/
 			if (FlxG.keys.justPressed.TWO)
 			{ // Go 10 seconds into the future, credit: Shadow Mario#9396
 				if (!usedTimeTravel && Conductor.songPosition + 10000 < FlxG.sound.music.length)
@@ -7634,7 +7638,7 @@ class PlayState extends MusicBeatState
 
 		if (isStoryMode && (storyPlaylist.length <= 0 && SONG.song.toLowerCase() != 'sansational'))
 		{
-			if (FileSystem.exists(Paths.video(cutPrefix + '/' + (storyIndex + 1) + suffix)))
+			/*if (FileSystem.exists(Paths.video(cutPrefix + '/' + (storyIndex + 1) + suffix)))
 			{
 				camGame.visible = false;
 				camHUD.visible = false;
@@ -7645,7 +7649,8 @@ class PlayState extends MusicBeatState
 			else
 			{
 				endSong();
-			}
+			}*/
+			endSong();
 		}
 		else
 		{
@@ -7820,7 +7825,7 @@ class PlayState extends MusicBeatState
 				{
 					if (SONG.song.toLowerCase().contains('gose'))
 					{
-						Sys.exit(0);
+						System.exit(0);
 					}
 					else
 					{
@@ -9584,7 +9589,7 @@ class PlayState extends MusicBeatState
 								forceAlt = true;
 								dad.preventDanceConstant = false;
 								bfPos[1] -= 150;
-								freakyMachineVideoSpr.alpha = 1;
+								// freakyMachineVideoSpr.alpha = 1;
 							});
 						});
 					});
@@ -10082,6 +10087,7 @@ class PlayState extends MusicBeatState
 			songLength = FlxG.sound.music.length;
 
 			// Updating Discord Rich Presence (with Time Left)
+			#if cpp
 			var disSong:String = SONG.song;
 			if (HelperFunctions.shouldBeHidden(SONG.song.toLowerCase()))
 				disSong = '[CONFIDENTIAL]';
@@ -10100,6 +10106,7 @@ class PlayState extends MusicBeatState
 				+ misses, iconRPC, true,
 				songLength
 				- Conductor.songPosition);
+			#end	
 		}
 	}
 
@@ -12192,18 +12199,18 @@ class PlayState extends MusicBeatState
 		}
 		paused = true;
 
-		if (gameVideos != null)
+		/*if (gameVideos != null)
 		{
 			for (i in 0...gameVideos.length)
 			{
 				gameVideos[i].bitmap.pause();
 			}
-		}
+		}*/
 
 		openSubState(new PauseSubState());
 	}
 
-	function antiCheat()
+	/*function antiCheat()
 	{
 		if (!FlxG.fullscreen)
 		{
@@ -12222,7 +12229,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
-	}
+	}*/
 
 	function getCamOffsets()
 	{

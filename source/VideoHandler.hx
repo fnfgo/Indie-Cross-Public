@@ -17,7 +17,7 @@ class VideoHandler
 {
 	public var finishCallback:Void->Void;
 	public var stateCallback:FlxState;
-    #if destkop
+    #if desktop
 	public var bitmap:VlcBitmap;
 	#end
 
@@ -37,7 +37,7 @@ class VideoHandler
 	public function playMP4(path:String, ?repeat:Bool = false, ?outputTo:FlxSprite = null, ?isWindow:Bool = false, ?isFullscreen:Bool = false,
 			?midSong:Bool = false):Void
 	{
-		#if cpp
+		#if desktop
 		if (!midSong)
 		{
 			if (FlxG.sound.music != null)
@@ -79,7 +79,6 @@ class VideoHandler
 
 			sprite = outputTo;
 		}
-
 		#end
 	}
 
@@ -204,11 +203,12 @@ class VideoHandler
 				trySkip();
 			}
 		}
-
+        #if cpp
 		bitmap.volume = FlxG.sound.volume + 0.3; // shitty volume fix. then make it louder.
 
 		if (FlxG.sound.volume <= 0.1)
 			bitmap.volume = 0;
+		#end
 	}
 
 	function trySkip()

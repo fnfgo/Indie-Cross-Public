@@ -78,17 +78,17 @@ class GameOverSubstate extends MusicBeatSubstate
 						{
 							hasVOfinished = false;
 							var maxRand:Int = 16;
-							if (HelperFunctions.isRecording())
+							/*if (HelperFunctions.isRecording())
 							{
 								maxRand = 19;
-							}
+							}*/
 							var random = FlxG.random.int(1, maxRand);
 
 							trace('random line: ' + random);
 
 							FlxG.sound.music.fadeOut(0.5, 0.1, function(twn:FlxTween)
 							{
-								if (random > 16)
+								/*if (random > 16)
 								{
 									trace('playing stream deathlines');
 									var newVal = random - 16;
@@ -100,7 +100,7 @@ class GameOverSubstate extends MusicBeatSubstate
 									});
 								}
 								else
-								{
+								{*/
 									trace('playing normal deathlines');
 									FlxG.sound.play(Paths.sound('deathlines/normal/' + random, 'shared'), 1, false, null, true, function()
 									{
@@ -108,7 +108,7 @@ class GameOverSubstate extends MusicBeatSubstate
 										FlxG.sound.music.fadeOut(0.5, 1);
 										hasVOfinished = true;
 									});
-								}
+								//}
 							});
 						}
 					});

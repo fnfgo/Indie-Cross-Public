@@ -11,8 +11,8 @@ import openfl.utils.Object;
 import offsetMenus.NotesplashOffsets;
 import Shaders.WhiteOverlayShader;
 import flixel.input.gamepad.FlxGamepad;
-import GameJolt.GameJoltAPI;
-import GameJolt.GameJoltLogin;
+// import GameJolt.GameJoltAPI;
+// import GameJolt.GameJoltLogin;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
@@ -213,7 +213,7 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 				back();
 		}
 
-		new FlxTimer().start(0.5, function(tmr:FlxTimer)
+		/*new FlxTimer().start(0.5, function(tmr:FlxTimer)
 		{
 			switch (curSelected)
 			{
@@ -221,7 +221,7 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 					disableInput = true;
 					Main.switchState(new GameJoltLogin());
 			}
-		});
+		});*/
 	}
 
 	function back()
@@ -334,7 +334,7 @@ class MainMenuState extends MusicBeatState
 		#end
 		add(versionText);
 
-		if (!FlxG.save.data.stopGJ && !GameJoltAPI.getStatus())
+		/*if (!FlxG.save.data.stopGJ && !GameJoltAPI.getStatus())
 		{
 			if (!Main.logAsked)
 			{
@@ -377,7 +377,7 @@ class MainMenuState extends MusicBeatState
 			{
 				versionText.text += '  //  Fuck you tk';
 			}
-		}
+		}*/
 
 		generateButtons(270, 100);
 		changeSelection(curSelected);
@@ -563,7 +563,7 @@ class MainMenuState extends MusicBeatState
 				}
 			}
 
-			var debuggers:Array<String> = ['BrightFyre', 'Sector03', 'volv'];
+			/*var debuggers:Array<String> = ['BrightFyre', 'Sector03', 'volv'];
 
 			if (debuggers.contains(GameJoltAPI.getUserInfo()))
 			{
@@ -573,7 +573,7 @@ class MainMenuState extends MusicBeatState
 					trace("Debug tools is now " + (debugTools ? "enabled." : "disabled."));
 					FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 				}
-			}
+			}*/
 
 
 			if (FlxG.keys.justPressed.L && FlxG.keys.pressed.CONTROL && debugTools)

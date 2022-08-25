@@ -491,6 +491,6 @@ class HelperFunctions
 	 */
 	public static function getSparrowAtlas(path:String):FlxAtlasFrames
 	{
-		return FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(BitmapData.fromFile(path + ".png")), File.getContent(path + ".xml"));
+		return FlxAtlasFrames.fromSparrow(FlxGraphic.fromBitmapData(BitmapData.fromFile(path + ".png")), OpenFlAssets.getText(path + ".xml"));
 	}
 }

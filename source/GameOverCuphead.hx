@@ -11,7 +11,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
-import lime.media.openal.AL;
+// import lime.media.openal.AL;
 import openfl.system.System;
 
 /**
@@ -233,10 +233,10 @@ class GameOverCuphead extends MusicBeatSubstate
 	{
 		super.update(elapsed);
 
-		@:privateAccess
+		/*@:privateAccess
 		{
-			AL.sourcef(deadMusic._channel.__source.__backend.handle, AL.PITCH, songSpeed);
-		}
+			AL.sourcef(deadMusic._channel.__source.__backend.handle, AL.PITCH, songSpeed); // not a good solution, but it works for now
+		}*/
 
 		if (!isEnding)
 		{
