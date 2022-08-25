@@ -3250,10 +3250,6 @@ class PlayState extends MusicBeatState
 					checkCut((cutPrefix + '/' + storyIndex + suffix).toString(), startCountdown);
 				}*/
 				startCountdown();
-				else
-				{
-					startCountdown();
-				}
 			}
 		}
 		else
