@@ -43,13 +43,10 @@ class OptionsMenu extends MusicBeatState
 		new OptionCategory("Performance", [
 			new Photosensitive("Turn off visual effects that may harm your vision."),
 			new HighQuality("Enable low quality mode for a smoother playing experience."),
-			new CacheStart("Enables caching and loading of images before the game starts and songs.")
 		]),
 		new OptionCategory("Window", [
 			new Gamma("Change the gamma value of the app."),
 			new Brightness("Change the brightness value of the app."),
-			new FocusFreeze("Freeze the game when clicking off of the application."),
-			new FocusPause("Open the pause menu when clicking off of the application in a song (Only works with Focus Freeze)."),
 			new FPSOption("Toggle the FPS Counter"),
 			new MemOption("Toggle the Memory Counter"),
 			new RainbowFPSOption("Make the FPS and Memory Counter Rainbow")

@@ -110,7 +110,7 @@ class KadeEngineData
 			FlxG.save.data.hudalpha = 1;
 
 		if (FlxG.save.data.cachestart == null)
-			FlxG.save.data.cachestart = true;
+			FlxG.save.data.cachestart = false;
 
 		if (FlxG.save.data.version == null)
 			FlxG.save.data.version = 0;
