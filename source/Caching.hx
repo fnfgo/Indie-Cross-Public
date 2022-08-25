@@ -8,7 +8,7 @@ import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
-#if !sys
+#if sys
 import sys.thread.Thread;
 #end
 
