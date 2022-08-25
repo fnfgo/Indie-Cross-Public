@@ -37,4 +37,4 @@ This game was made with love to Newgrounds and its community. Extra love to Tom 
 
 
 # Installation
- Dont need this will have a root with the html game
+WE DID IT THANK GOD!!! MEMEHOOVY DID MOST OF IT LETS FLIPIN GOOOOOOO
