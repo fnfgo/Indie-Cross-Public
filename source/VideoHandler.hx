@@ -84,6 +84,7 @@ class VideoHandler
 
 	function checkFile(fileName:String):String
 	{
+		#if sys
 		var pDir = "";
 		var appDir = "file:///" + Sys.getCwd() + "/";
 
@@ -93,6 +94,7 @@ class VideoHandler
 			pDir = "file:///";
 
 		return pDir + fileName;
+		#end
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -114,11 +116,13 @@ class VideoHandler
 
 	function fixVolume(e:Event)
 	{
+		#if cpp
 		bitmap.volume = 0;
 		if (!FlxG.sound.muted && FlxG.sound.volume > 0.01) 
 		{
 			bitmap.volume = FlxG.sound.volume * 0.5 + 0.5;
 		}
+		#end
 	}
 
 	public function onVLCComplete()
@@ -213,6 +217,7 @@ class VideoHandler
 
 	function trySkip()
 	{
+		#if cpp
 		if (allowSkip)
 		{
 			if (bitmap.isPlaying)
@@ -220,5 +225,6 @@ class VideoHandler
 				onVLCComplete();
 			}
 		}
+		#end
 	}
 }
