@@ -82,21 +82,6 @@ class VideoHandler
 		#end
 	}
 
-	function checkFile(fileName:String):String
-	{
-		#if sys
-		var pDir = "";
-		var appDir = "file:///" + Sys.getCwd() + "/";
-
-		if (fileName.indexOf(":") == -1) // Not a path
-			pDir = appDir;
-		else if (fileName.indexOf("file://") == -1 || fileName.indexOf("http") == -1) // C:, D: etc? ..missing "file:///" ?
-			pDir = "file:///";
-
-		return pDir + fileName;
-		#end
-	}
-
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	function onVLCVideoReady()
