@@ -32,8 +32,8 @@ This game was made with love to Newgrounds and its community. Extra love to Tom 
  - [mathieuanthoine](https://github.com/mathieuanthoine) 
  
 ### Indie cross HTML - Indie cross html support
- -[Memehoovy](https://github.com/MemeHoovy)
- -[LeviXDD](https://github.com/LEVIXDDLMAO)
+ - [Memehoovy](https://github.com/MemeHoovy)
+ - [LeviXDD](https://github.com/LEVIXDDLMAO)
 
 
 # Installation
