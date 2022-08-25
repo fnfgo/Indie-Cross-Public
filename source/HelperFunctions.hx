@@ -11,7 +11,8 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import lime.utils.Assets;
 import openfl.display.BitmapData;
-import js.html.FileSystem;
+import openfl.utils.Assets as OpenFlAssets;
+// import js.html.FileSystem;
 
 using StringTools;
 
@@ -319,7 +320,7 @@ class HelperFunctions
 		}
 		else
 		{
-			if (FileSystem.exists('assets/data/' + song.toLowerCase() + '/' + poop.toLowerCase() + '.json'))
+			if (OpenFlAssets.exists('assets/data/' + song.toLowerCase() + '/' + poop.toLowerCase() + '.json'))
 			{
 				var json:Dynamic;
 	
@@ -354,7 +355,7 @@ class HelperFunctions
 
 	public static function instExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Inst.ogg'))
+		if (OpenFlAssets.exists('assets/songs/' + song.toLowerCase() + '/Inst.ogg'))
 		{
 			return true;
 		}
@@ -366,7 +367,7 @@ class HelperFunctions
 
 	public static function vocalExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Voices.ogg'))
+		if (OpenFlAssets.exists('assets/songs/' + song.toLowerCase() + '/Voices.ogg'))
 		{
 			return true;
 		}
@@ -378,7 +379,7 @@ class HelperFunctions
 
 	public static function instEasyExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Inst-easy.ogg'))
+		if (OpenFlAssets.exists('assets/songs/' + song.toLowerCase() + '/Inst-easy.ogg'))
 		{
 			return true;
 		}
@@ -390,7 +391,7 @@ class HelperFunctions
 
 	public static function vocalEasyExists(song:String):Bool
 	{
-		if (FileSystem.exists('assets/songs/' + song.toLowerCase() + '/Voices-easy.ogg'))
+		if (OpenFlAssets.exists('assets/songs/' + song.toLowerCase() + '/Voices-easy.ogg'))
 		{
 			return true;
 		}

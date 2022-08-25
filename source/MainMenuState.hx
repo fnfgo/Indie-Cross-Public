@@ -296,7 +296,9 @@ class MainMenuState extends MusicBeatState
 		FlxG.mouse.visible = true;
 
 		Application.current.window.title = Main.appTitle;
+		#if cpp
 		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/BG', 'preload'));
 		bg.updateHitbox();

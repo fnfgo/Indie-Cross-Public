@@ -14,8 +14,10 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import openfl.display.BitmapData;
+#if sys
 import sys.Http;
 import sys.io.Process;
+#end
 
 using StringTools;
 
