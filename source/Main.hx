@@ -98,7 +98,7 @@ class Main extends Sprite
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
-		FlxG.keys.preventDefaultKeys = []; // fix for arrow keys?
+		FlxG.keys.preventDefaultKeys = []; // fix for arrow keys? see: https://github.com/HaxeFlixel/flixel/issues/2190
 
 		if (zoom == -1)
 		{
