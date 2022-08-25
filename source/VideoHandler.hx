@@ -7,7 +7,9 @@ import flixel.FlxState;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.events.Event;
+#if desktop
 import vlc.VlcBitmap;
+#end
 
 // THIS IS FOR TESTING
 // DONT STEAL MY CODE >:(
@@ -15,7 +17,9 @@ class VideoHandler
 {
 	public var finishCallback:Void->Void;
 	public var stateCallback:FlxState;
+    #if destkop
 	public var bitmap:VlcBitmap;
+	#end
 
 	public var sprite:FlxSprite;
 

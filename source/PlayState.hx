@@ -116,7 +116,7 @@ class PlayState extends MusicBeatState
 	var songSpeed:Float = 1.0;
 	var slow:Bool = false;
 
-	var cutsceneSpr:FlxSprite;
+	// var cutsceneSpr:FlxSprite;
 
 	public var bendyBoyGroup:FlxTypedGroup<BendyBoy>;
 
@@ -360,7 +360,7 @@ class PlayState extends MusicBeatState
 
 	var machineCurtainLeft:FlxSprite;
 	var machineCurtainRight:FlxSprite;
-	var freakyMachineVideoSpr:FlxSprite;
+	// var freakyMachineVideoSpr:FlxSprite;
 
 	var lastAnimPlay:Float = 0;
 
@@ -1122,7 +1122,7 @@ class PlayState extends MusicBeatState
 								bg.active = false;
 								add(bg);
 
-								freakyMachineVideoSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+								/*freakyMachineVideoSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 								freakyMachineVideoSpr.width = FlxG.width / 4;
 								freakyMachineVideoSpr.height = FlxG.height / 4;
 								add(freakyMachineVideoSpr);
@@ -1130,16 +1130,16 @@ class PlayState extends MusicBeatState
 								freakyMachineVideoSpr.x -= 600;
 								freakyMachineVideoSpr.y -= 250;
 								freakyMachineVideoSpr.blend = ADD;
-								freakyMachineVideoSpr.alpha = 0.0001;
+								freakyMachineVideoSpr.alpha = 0.0001;*/
 
-								var freakyMachineVideo:VideoHandler = new VideoHandler();
+								/*var freakyMachineVideo:VideoHandler = new VideoHandler();
 								var videoName:String = 'bgscenephotosensitive';
 								if (!FlxG.save.data.photosensitive && FlxG.save.data.highquality)
 								{
 									videoName = 'bgscene';
 								}
 								freakyMachineVideo.playMP4(Paths.video('bendy/' + videoName), true, freakyMachineVideoSpr, false, false, true);
-								gameVideos.push(freakyMachineVideo);
+								gameVideos.push(freakyMachineVideo);*/
 
 								machineCurtainLeft = new FlxSprite(-403, -50).loadGraphic(Paths.image('bonusSongs/Curtain1', "shared"));
 								machineCurtainLeft.setGraphicSize(Std.int(machineCurtainLeft.width * 1.6));
@@ -3163,7 +3163,7 @@ class PlayState extends MusicBeatState
 						trace('b');
 						camGame.visible = true;
 						videoPlaying = false;
-						if (cutsceneSpr != null) cutsceneSpr.visible = false;
+						// if (cutsceneSpr != null) cutsceneSpr.visible = false;
 						camDialogue.fade(FlxColor.BLACK, 1, true, function()
 						{
 							var theDialogue:Array<String> = [];
@@ -3360,7 +3360,7 @@ class PlayState extends MusicBeatState
 
 			canPause = false;
 
-			cutsceneSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+			/*cutsceneSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 			add(cutsceneSpr);
 			cutsceneSpr.cameras = [camSUBTITLES];
 			camSUBTITLES.visible = true;
@@ -3370,7 +3370,7 @@ class PlayState extends MusicBeatState
 			new FlxTimer().start(0.10, function(tmr:FlxTimer) //keeps that white flash from happening
 				{
 					cutsceneSpr.color = FlxColor.WHITE;
-				});
+				});*/
 
 			var accessibilitySubtitles:FlxText;
 			accessibilitySubtitles = new FlxText(0, FlxG.height - 84, 0, "Test", 32);
@@ -3598,7 +3598,7 @@ class PlayState extends MusicBeatState
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, releaseInput);
 
-		if (cutsceneSpr != null) cutsceneSpr.visible = false;
+		// if (cutsceneSpr != null) cutsceneSpr.visible = false;
 
 		camSUBTITLES.visible = false;
 
@@ -7523,12 +7523,12 @@ class PlayState extends MusicBeatState
 			}
 		};
 
-		cutsceneSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		/*cutsceneSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(cutsceneSpr);
-		cutsceneSpr.cameras = [camSUBTITLES];
+		cutsceneSpr.cameras = [camSUBTITLES];*/
 		camSUBTITLES.visible = true;
 		
-		switch (SONG.song.toLowerCase())
+		/*switch (SONG.song.toLowerCase())
 		{
 			case 'knockout':
 				video.playMP4(Paths.video('cuphead/4'), false, cutsceneSpr, false, true);
@@ -7549,7 +7549,7 @@ class PlayState extends MusicBeatState
 				{
 					cutsceneSpr.color = FlxColor.WHITE;
 				});
-		}
+		}*/
 	}
 
 	function partyIsOver():Void
@@ -9365,10 +9365,8 @@ class PlayState extends MusicBeatState
 					pushStepEvent(940, function()
 					{
 						canPause = false;
-						var video:VideoHandler = new VideoHandler();
-						video.fadeFromBlack = true;
-						video.allowSkip = false;
-						video.playMP4(Paths.video('bendy/1.5'), false, null, false, false, true);
+						FlxG.camera.alpha = 0.00001;
+						camHUD.alpha = 0.00001;
 
 						remove(light);
 					});
@@ -9405,6 +9403,8 @@ class PlayState extends MusicBeatState
 					pushStepEvent(1209, function()
 					{
 						canPause = true;
+						FlxG.camera.alpha = 1;
+						camHUD.alpha = 1;
 						defaultBrightVal = -0.05;
 						brightSpeed = 0.5;
 						brightMagnitude = 0.05;

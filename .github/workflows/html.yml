@@ -28,7 +28,7 @@ jobs:
           haxelib git tentools https://github.com/TentaRJ/tentools.git
           haxelib list
       - name: Compile
-        run: haxelib run lime build html5 -final
+        run: haxelib run lime build html5
 
       - name: Publish Artifact
         uses: actions/upload-artifact@v2.2.4

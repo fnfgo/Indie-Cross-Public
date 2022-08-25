@@ -11,6 +11,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import lime.utils.Assets;
 import openfl.display.BitmapData;
+import js.html.FileSystem;
 
 using StringTools;
 
@@ -349,44 +350,6 @@ class HelperFunctions
 				createFakeSong(song);
 			}
 		}
-	}
-
-	
-	public static function isRecording():Bool
-	{
-		var programList:Array<String> = 
-		[
-			'obs32',
-			'obs64',
-			'streamlabs obs',
-			'bdcam',
-			'fraps',
-			'xsplit', // TIL c# program
-			'hycam2', // hueh
-			'twitchstudio' // why
-		];
-
-		var taskList:Process = new Process('tasklist', []);
-		var readableList:String = taskList.stdout.readAll().toString().toLowerCase();
-		var isOBS:Bool = false;
-
-		for (i in 0...programList.length)
-		{
-			if (readableList.contains(programList[i]))
-			{
-				trace('found ' + programList[i]);
-				isOBS = true;
-			}
-			else
-			{
-				trace('didnt find anything');
-			}
-		}
-
-		taskList.close();
-		readableList = '';
-
-		return isOBS;
 	}
 
 	public static function instExists(song:String):Bool
