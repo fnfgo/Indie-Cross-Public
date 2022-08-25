@@ -1,7 +1,7 @@
 package;
 
 import offsetMenus.IconOffsets;
-import GameJolt.GameJoltInfo;
+// import GameJolt.GameJoltInfo;
 import Shaders.FXHandler;
 import flixel.FlxCamera;
 import flixel.FlxG;
