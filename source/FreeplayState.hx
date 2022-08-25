@@ -23,7 +23,6 @@ import openfl.media.Sound;
 import openfl.media.SoundChannel;
 import openfl.media.SoundTransform;
 import openfl.utils.Assets;
-import sys.thread.Thread;
 import flixel.input.keyboard.FlxKey;
 
 using StringTools;

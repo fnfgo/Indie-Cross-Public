@@ -11,7 +11,6 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import lime.utils.Assets;
 import openfl.display.BitmapData;
-import sys.thread.Thread;
 
 using StringTools;
 

@@ -124,17 +124,7 @@ class Caching extends MusicBeatState
 
 		FlxG.save.data.optimize = false;
 
-		if (FlxG.save.data.cachestart)
-		{
-			Thread.create(() ->
-			{
-				cache();
-			});
-		}
-		else
-		{
-			end();
-		}
+		end();
 	}
 
 	function cache()

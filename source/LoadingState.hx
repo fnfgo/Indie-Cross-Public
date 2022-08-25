@@ -5,7 +5,9 @@ import flixel.FlxState;
 import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+#if sys
 import sys.thread.Thread;
+#end
 
 using StringTools;
 
@@ -80,7 +82,8 @@ class LoadingState extends MusicBeatState
 		FlxG.camera.fade(FlxG.camera.bgColor, 0.5, true);
 
 		FlxGraphic.defaultPersist = true;
-		Thread.create(() ->
+		loadAndSwitchState(target, false);
+		/*Thread.create(() ->
 		{
 			screen.setLoadingText("Loading sounds...");
 			for (sound in soundsToCache)
@@ -110,7 +113,7 @@ class LoadingState extends MusicBeatState
 				screen.destroy();
 				loadAndSwitchState(target, false);
 			});
-		});
+		});*/
 	}
 
 	public static function loadAndSwitchState(target:FlxState, stopMusic = false)
