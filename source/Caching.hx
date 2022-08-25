@@ -8,7 +8,9 @@ import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
+#if !sys
 import sys.thread.Thread;
+#end
 
 using StringTools;
 
@@ -195,7 +197,7 @@ class Caching extends MusicBeatState
 
 		screen.setLoadingText("Loading cutscenes...");
 		
-		if (!debug)
+		/*if (!debug)
 		{
 			trace('starting vid cache');
 			var video = new VideoHandler();
@@ -205,7 +207,7 @@ class Caching extends MusicBeatState
 			video.playMP4(Paths.video('bendy/1.5'), false, vidSprite, false, false, true);
 			video.kill();
 			trace('finished vid cache');
-		}
+		}*/
 
 		screen.progress = 9;
 

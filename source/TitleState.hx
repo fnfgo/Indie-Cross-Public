@@ -15,17 +15,12 @@ using StringTools;
 
 class TitleState extends MusicBeatState
 {
-	static var initialized:Bool = false;
-
 	var textGroup:FlxGroup;
 
 	var bg:FlxSprite;
 	var logoBl:FlxSprite;
 	var playBttn:FlxSprite;
 	var bfSpr:FlxSprite;
-
-	var vidSpr:FlxSprite;
-	var videoDone:Bool = false;
 
 	var blackOverlay:FlxSprite;
 
@@ -120,7 +115,7 @@ class TitleState extends MusicBeatState
 		blackOverlay.updateHitbox();
 		blackOverlay.screenCenter();
 		blackOverlay.scrollFactor.set();
-		add(blackOverlay);
+		// add(blackOverlay);
 
 		vidSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 		add(vidSpr);
@@ -135,53 +130,8 @@ class TitleState extends MusicBeatState
 		Conductor.changeBPM(Main.menubpm);
 		persistentUpdate = true;
 
-		if (!videoDone && !initialized)
-		{
-			if (FlxG.sound.music != null)
-				FlxG.sound.music.stop();
-
-			skipText = new FlxText(0, FlxG.height - 26, 0, "Press Enter to skip", 18);
-			skipText.alpha = 0;
-			skipText.setFormat(HelperFunctions.returnMenuFont(skipText), 18, FlxColor.WHITE, RIGHT);
-			skipText.scrollFactor.set();
-			skipText.screenCenter(X);
-
-			var video:VideoHandler = new VideoHandler();
-			video.allowSkip = FlxG.save.data.watchedTitleVid;
-			video.finishCallback = function()
-			{
-				videoDone = true;
-				FlxG.sound.playMusic(Paths.music(Main.menuMusic), 0);
-				FlxG.sound.music.fadeIn(4, 0, 1);
-				vidSpr.visible = false;
-				remove(skipText);
-				FlxTween.tween(blackOverlay, {alpha: 0}, 1);
-			};
-			FlxG.save.data.watchedTitleVid = true;
-			video.playMP4(Paths.video('intro'), false, vidSpr, false, true, false);
-
-			if (video.allowSkip)
-			{
-				add(skipText);
-				FlxTween.tween(skipText, {alpha: 1}, 1, {ease: FlxEase.quadIn});
-				FlxTween.tween(skipText, {alpha: 0}, 1, {ease: FlxEase.quadIn, startDelay: 4});
-			}
-			else
-			{
-				MainMenuState.showKeybindsMenu = true;
-			}
-		}
-
-		if (initialized)
-		{
-			vidSpr.visible = false;
-			videoDone = true;
-			blackOverlay.alpha = 0;
-		}
-		else
-		{
-			initialized = true;
-		}
+		FlxG.sound.playMusic(Paths.music(Main.menuMusic), 0);
+		FlxG.sound.music.fadeIn(4, 0, 1);
 	}
 
 	var transitioning:Bool = false;
@@ -197,19 +147,19 @@ class TitleState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 		}
 
-		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.R && videoDone)
+		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.R)
 		{
 			restart();
 		}
 
 		#if debug
-		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.A && videoDone)
+		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.A)
 		{
 			Main.switchState(new AnimState());
 		}
 		#end
 
-		if (!transitioning && videoDone)
+		if (!transitioning)
 		{
 			if (controls.ACCEPT || (FlxG.mouse.justPressed && Main.focused))
 			{
@@ -217,7 +167,7 @@ class TitleState extends MusicBeatState
 			}
 		}
 
-		if (FlxG.keys.justPressed.ANY && !videoDone)
+		if (FlxG.keys.justPressed.ANY)
 		{
 			var key = FlxG.keys.getIsDown()[0].ID;
 
