@@ -81,7 +81,6 @@ class Main extends Sprite
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
-		trace('current State': + Type.toString(FlxG.state));
 		// FlxG.log.info('current State: ' + Type.toString(FlxG.state));
 	}
 
@@ -251,6 +250,7 @@ class Main extends Sprite
 	{
 		dumping = true;
 		FlxG.switchState(target);
+		trace('current State': + Type.toString(FlxG.state));
 	}
 
 	public function toggleFPS(fpsEnabled:Bool):Void
