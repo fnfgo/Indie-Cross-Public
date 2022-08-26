@@ -61,4 +61,19 @@ http-server -c-1
 This spins up a Node.js httpd which serves the files in your directory as
 static files accessible from http://localhost:8080
 
-Note that if you get an error: http-server is not recognized as a command or external command, do the following.
+Note that if you get an error: http-server is not recognized as a command or external command or if the same thing happens with npm, do the following.
+add
+```
+C:\Users\username\AppData\Roaming\npm
+```
+and after you installed http-server
+```
+C:\Users\username\AppData\Roaming\npm\node_modules\http-server
+```
+to environment variable 'PATH'
+
+dm me on discord if you have any issues with the server, 
+or if you have any problems with figuring out how to use environment variables (remember, google is your friend)
+```
+MemeHoovy#8234
+```
