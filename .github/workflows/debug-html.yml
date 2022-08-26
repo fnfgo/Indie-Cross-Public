@@ -68,7 +68,7 @@ jobs:
           cd export/debug/html5/bin
           git init
           git add *
-          git remote add origin https://levixddlmao:${{ secrets.TOKEN }}@github.com/levixddlmao/IndieCrossDEBUGhtml.git
+          git remote add origin https://LeviXD:${{ secrets.TOKEN }}@github.com/LeviXD/IndieCrossDEBUGhtml.git
           git config user.email a@a
           git config user.name a
           git commit -m "Gihub actions commit" --allow-empty
