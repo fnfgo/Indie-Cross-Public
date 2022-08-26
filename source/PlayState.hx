@@ -417,7 +417,7 @@ class PlayState extends MusicBeatState
 	var fgGrain:FlxSprite;
 	var devilIntroSpr:FlxSprite;
 
-	var sans:VideoHandler;
+	// var sans:VideoHandler;
 	var sansSprite:FlxSprite;
 	var sansTalking:Bool = false;
 
@@ -465,7 +465,7 @@ class PlayState extends MusicBeatState
 
 	var hasBlackBars:Bool = false;
 
-	var gameVideos:Array<VideoHandler> = [];
+	// var gameVideos:Array<VideoHandler> = [];
 
 	public function new()
 	{
@@ -3302,59 +3302,11 @@ class PlayState extends MusicBeatState
 
 	public static var deathCount:Int = 0;
 
-	function checkCut(vid:String = '', daCallback:Void->Void)
+	function checkCut(daCallback:Void->Void)
 	{
 		if (playCutscene)
 		{
 			playCutscene = false;
-
-			var video:VideoHandler = new VideoHandler();
-			video.finishCallback = daCallback;
-			video.allowSkip = false;
-
-			if (MainMenuState.debugTools)
-			{
-				trace('allowing skip');
-				video.allowSkip = true;
-			}
-			else
-			{
-				switch (storyWeek)
-				{
-					case 0:
-						if (FlxG.save.data.weeksbeat[0])
-						{
-							trace('allowing skip');
-							video.allowSkip = true;
-						}
-					case 1:
-						if (FlxG.save.data.weeksbeat[1])
-						{
-							if (geno)
-							{
-								if (FlxG.save.data.hasgenocided)
-								{
-									trace('allowing skip');
-									video.allowSkip = true;
-								}
-							}
-							else
-							{
-								if (FlxG.save.data.haspacifisted)
-								{
-									trace('allowing skip');
-									video.allowSkip = true;
-								}
-							}
-						}
-					case 2:
-						if (FlxG.save.data.weeksbeat[2])
-						{
-							trace('allowing skip');
-							video.allowSkip = true;
-						}
-				}
-			}
 
 			canPause = false;
 
@@ -3378,75 +3330,7 @@ class PlayState extends MusicBeatState
 			accessibilitySubtitles.screenCenter(X);
 			accessibilitySubtitles.borderSize = 1.5;
 			accessibilitySubtitles.cameras = [camSUBTITLES];
-			add(accessibilitySubtitles);
-
-			switch (vid)
-			{
-				case "cuphead/1":
-				{
-					pushSubtitle('Hmm...', 10.583, 11.375, false);
-					pushSubtitle("now if I were a crazy portal openin'", 11.375, 13.542, false);
-					pushSubtitle('where would I be?', 13.542, 14.917, false);
-					pushSubtitle("Well, it's no portal", 15.542, 16.833, false);
-					pushSubtitle('but it looks like I found the screw loose!', 17.03, 19.04, false);
-					pushSubtitle('Hey, busta!', 22.250, 23.125, false);
-					pushSubtitle("You got a lotta nerve messin' with our land!", 23.125, 25.375, false);
-					pushSubtitle('What say we settle this here and now?', 25.375, 28.08, false);
-					pushSubtitle('Beep!', 30.45, 31.167, false);
-				}
-				case "cuphead/2":
-				{
-					pushSubtitle('Aw, blast!', 0.54, 1.41, false);
-					pushSubtitle('This is gonna be tougher than I thought.', 1.41, 3.208, false);
-					pushSubtitle("Looks like I'm gonna have to...", 3.208, 4.667, false);
-					pushSubtitle('double down!', 4.66, 5.667, false);
-					pushSubtitle('Hey! Do you need any help, Cuphead?', 5.667, 7.292, false);
-					pushSubtitle('Nah, I got this, bro!', 7.292, 8.708, false);
-					pushSubtitle('Go see if you can find Ms. Chalice lady for us, yeah?', 8.708, 10.958, false);
-					pushSubtitle('You got it! But please, Cuphead...', 10.958, 12.792, false);
-					pushSubtitle('No. More. Violence!', 12.792, 14.667, false);
-					pushSubtitle("I'll be back before ya even know it!", 15.0, 16.833, false);
-					pushSubtitle('Hopefully not too soon.', 17.625, 19.333, false);
-					pushSubtitle("He doesn't do too well with damage", 19.333, 21.125, false);
-					pushSubtitle('Now, where were we?', 21.125, 22.333, false);
-					pushSubtitle('Oh, yeah!', 22.333, 23.375, false);
-					pushSubtitle("Let's double down!", 23.375, 24.667, false);
-					pushSubtitle('Beep!', 27.417, 28.125, false);
-				}
-				case "cuphead/3":
-				{
-					pushSubtitle('Argh...', 10.458, 10.792, false);
-					pushSubtitle('nuts to this!', 10.792, 12.167, false);
-					pushSubtitle('Ugh...', 12.167, 12.875, false);
-					pushSubtitle('What did my brother say?', 12.875, 14.417, false);
-					pushSubtitle('Now remember, bro!', 14.417, 15.458, false);
-					pushSubtitle('No. More. Violence!', 15.458, 17.083, false);
-					pushSubtitle("Unless it's a boy with a red cap, blue hair and white shirt...", 17.083, 20.000, false);
-					pushSubtitle("then uh go frickin' wild!", 20.000, 21.208, false);
-					pushSubtitle('Oh, yeah!', 21.208, 21.917, false);
-					pushSubtitle("Good ol' reliable Mugman!", 21.917, 24.125, false);
-					pushSubtitle('Alright Kid, you asked for this!', 24.125, 25.958, false);
-					pushSubtitle('Time to go full triple down on your ass!', 25.958, 29.625, false);
-					pushSubtitle('Beep!', 32.583, 33.167, false);
-				}
-				case "bendy/2":
-				{
-					pushSubtitle('Sheep, sheep, sheep...', 0.250, 2.208, false);
-					pushSubtitle("It's time...", 2.208, 3.417, false);
-					pushSubtitle("My lord!", 6.083, 7.083, false);
-					pushSubtitle("Hm?! What the...?", 8.958, 10.542, false);
-					pushSubtitle("Hm.. I see.", 12.667, 14.500, false);
-					pushSubtitle("There's only one way to put an end to this", 14.500, 16.958, false);
-					pushSubtitle("though it's not gonna be pleasant.", 16.958, 19.542, false);
-					pushSubtitle("What the ****?!", 19.542, 21.667, false);
-				}
-				case "bendy/3":
-				{
-					pushSubtitle('Not bad...', 0.458, 1.875, false);
-				}			
-			}
-
-			
+			// add(accessibilitySubtitles);			
 		}
 		else
 		{
