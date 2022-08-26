@@ -85,38 +85,6 @@ class Caching extends MusicBeatState
 		FlxG.mouse.useSystemCursor = true;
 		FlxG.console.autoPause = false;
 		FlxG.autoPause = false;
-		/*switch (FlxG.save.data.resolution)
-		{
-			case 0:
-				FlxG.resizeWindow(640,360);
-				FlxG.resizeGame(640,360);
-			case 1:
-				FlxG.resizeWindow(768,432);
-				FlxG.resizeGame(768,432);
-			case 2:
-				FlxG.resizeWindow(896,504);
-				FlxG.resizeGame(896,504);
-			case 3:
-				FlxG.resizeWindow(640,360);
-				FlxG.resizeGame(640,360);
-			case 4:
-				FlxG.resizeWindow(1152,648);
-				FlxG.resizeGame(1152,648);
-			case 5:
-				FlxG.resizeWindow(1280,720);
-				FlxG.resizeGame(1280,720);
-			case 6:
-				FlxG.resizeWindow(1920,1080);
-				FlxG.resizeGame(1920,1080);
-			case 7:
-				FlxG.resizeWindow(2560,1440);
-				FlxG.resizeGame(2560,1440);
-			case 8:
-				FlxG.resizeWindow(3840,2160);
-				FlxG.resizeGame(3840,2160);
-
-
-		}*/
 
 		// GameJoltAPI.connect();
 		// GameJoltAPI.authDaUser(FlxG.save.data.gjUser, FlxG.save.data.gjToken);
@@ -212,11 +180,6 @@ class Caching extends MusicBeatState
 
 	function end()
 	{
-		FlxG.camera.fade(FlxColor.BLACK, 1, false);
-		
-		new FlxTimer().start(1, function(tmr:FlxTimer)
-		{
-			FlxG.switchState(new TitleState());
-		});
+		FlxG.switchState(new TitleState());
 	}
 }

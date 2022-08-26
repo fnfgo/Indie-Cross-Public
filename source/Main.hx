@@ -81,6 +81,8 @@ class Main extends Sprite
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
+		trace('current State': + Type.toString(FlxG.state));
+		// FlxG.log.info('current State: ' + Type.toString(FlxG.state));
 	}
 
 	private function init(?E:Event):Void
