@@ -448,7 +448,7 @@ class PlayState extends MusicBeatState
 	var mechAnim:FlxSprite;
 	var mechPressEnter:FlxText;
 	var hasInstruction:Bool = false;
-	var videoPlaying:Bool = false;
+	// var videoPlaying:Bool = false;
 	var mechInstructMusic:FlxSound;
 
 	var light:FlxSprite;
@@ -3437,7 +3437,6 @@ class PlayState extends MusicBeatState
 	function cutsceneOver():Void
 	{
 		FlxG.camera.fade(FlxColor.BLACK, 0, true);
-		videoPlaying = false;
 		startCountdown();
 	}
 
@@ -3498,8 +3497,6 @@ class PlayState extends MusicBeatState
 		{
 			FlxTween.tween(camHUD, {alpha: 1}, 2, {ease: FlxEase.quadInOut});
 		}
-
-		videoPlaying = false;
 
 		checkHiddenChars();
 
@@ -3877,7 +3874,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			videoPlaying = false;
+			// videoPlaying = false;
 		}
 	}
 
@@ -5167,7 +5164,7 @@ class PlayState extends MusicBeatState
 			mechAnim.alpha = mechInstructions.alpha;
 		}
 
-		if (hasInstruction && controls.ACCEPT && !inCutscene && !videoPlaying)
+		if (hasInstruction && controls.ACCEPT && !inCutscene /*&& !videoPlaying*/)
 		{
 			hasInstruction = false;
 			camGame.visible = true;
@@ -6393,7 +6390,7 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.save.data.resetButton)
 		{
-			if (FlxG.keys.justPressed.R && !cannotDie && !paused && !videoPlaying && !hasInstruction && !inCutscene && !sansTalking)
+			if (FlxG.keys.justPressed.R && !cannotDie && !paused /*&& !videoPlaying*/ && !hasInstruction && !inCutscene && !sansTalking)
 			{
 				playerDie();
 			}
@@ -7381,30 +7378,6 @@ class PlayState extends MusicBeatState
 		camHUD.visible = false;
 		camOVERLAY.visible = false;
 		canPause = false;
-		var video:VideoHandler = new VideoHandler();
-		video.fadeFromBlack = true;
-		video.allowSkip = false;
-
-		if (MainMenuState.debugTools)
-		{
-			trace('allowing skip');
-			video.allowSkip = true;
-		}
-
-		video.finishCallback = function()
-		{
-			Conductor.changeBPM(Main.menubpm);	
-			if ((FlxG.save.data.weeksbeat[0] && FlxG.save.data.weeksbeat[1] && FlxG.save.data.weeksbeat[2]) && storyWeek == 2)
-			{
-				MainMenuState.showCredits = true;
-				pushToAchievementIDS("The End", true);
-				Main.switchState(new MainMenuState());
-			}
-			else
-			{
-				Main.switchState(new StoryMenuState());
-			}
-		};
 
 		/*cutsceneSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(cutsceneSpr);
