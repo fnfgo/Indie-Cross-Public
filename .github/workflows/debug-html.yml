@@ -10,9 +10,9 @@ concurrency:
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ html5 ]
   pull_request:
-    branches: [ master ]
+    branches: [ html5 ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -58,6 +58,7 @@ jobs:
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install actuate --quiet
           haxelib git extension-webm https://github.com/KadeDev/extension-webm
+          haxelib git tentools https://github.com/TentaRJ/tentools.git
           haxelib run lime rebuild extension-webm html5
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
