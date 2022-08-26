@@ -3159,11 +3159,10 @@ class PlayState extends MusicBeatState
 					camHUD.visible = false;
 					camOVERLAY.visible = false;
 
-					checkCut((cutPrefix + '/' + storyIndex + suffix).toString(), function()
+					checkCut(function()
 					{
 						trace('b');
 						camGame.visible = true;
-						videoPlaying = false;
 						// if (cutsceneSpr != null) cutsceneSpr.visible = false;
 						camDialogue.fade(FlxColor.BLACK, 1, true, function()
 						{
