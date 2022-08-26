@@ -41,7 +41,9 @@ WE DID IT THANK GOD!!! MEMEHOOVY DID MOST OF IT LETS FLIPIN GOOOOOOO
 
 # Node.js Instructions. (THX STACKOVERFLOW: https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local)
 
-First, make you have the latest npm.
+First you will need Node.js installed: https://nodejs.org/
+
+Then, make sure you have the latest npm.
 ```
 npm install -g npm
 ```
