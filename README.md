@@ -38,3 +38,25 @@ This game was made with love to Newgrounds and its community. Extra love to Tom 
 
 # Installation
 WE DID IT THANK GOD!!! MEMEHOOVY DID MOST OF IT LETS FLIPIN GOOOOOOO
+
+# Node.js Instructions. (THX STACKOVERFLOW: https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local)
+
+First, make you have the latest npm.
+```
+npm install -g npm
+```
+
+After you have the latest npm install the http server.
+```
+npm install -g http-server
+```
+download from Github Actions, or in the releases. TODO: Add releases in there.
+Then open command prompt, change to your game's directory, with index.html
+Now, start your http server.
+```
+http-server -c-1
+```
+This spins up a Node.js httpd which serves the files in your directory as
+static files accessible from http://localhost:8080
+
+Note that if you get an error: http-server is not recognized as a command or external command, do the following.

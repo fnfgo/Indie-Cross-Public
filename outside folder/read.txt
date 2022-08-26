@@ -1,0 +1,1 @@
+use this folder for keeping assets outside the game files, so they're not preloaded
