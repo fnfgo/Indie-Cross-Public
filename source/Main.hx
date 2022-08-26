@@ -82,7 +82,7 @@ class Main extends Sprite
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		// FlxG.log.info('current State:' ' + Type.toString(FlxG.state));
-		trace('current State:' + Type.getClass(FlxG.state));
+		// trace('current State:' + Type.getClass(FlxG.state));
 	}
 
 	private function init(?E:Event):Void
