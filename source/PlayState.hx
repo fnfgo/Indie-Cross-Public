@@ -5212,7 +5212,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
-
+        #if debug
 		if (MainMenuState.debugTools)
 		{
 			if (FlxG.keys.pressed.CONTROL)
@@ -5261,6 +5261,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
+		#end
 
 		/*if (SONG.song.toLowerCase() == "despair")
 			{
@@ -6191,7 +6192,7 @@ class PlayState extends MusicBeatState
 			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, 0.95);
 			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, 0.95);
 		}
-
+        #if debug
 		if (MainMenuState.debugTools)
 		{
 			if (FlxG.keys.justPressed.LBRACKET)
@@ -6329,6 +6330,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 		}
+		#end
 
 		if (startingSong)
 		{
@@ -7159,7 +7161,7 @@ class PlayState extends MusicBeatState
 			keyShit();
 
 		//inkFade();
-
+        #if debug
 		if (FlxG.keys.justPressed.ONE && FlxG.keys.pressed.CONTROL && MainMenuState.debugTools)
 		{
 			if (isStoryMode
@@ -7175,6 +7177,7 @@ class PlayState extends MusicBeatState
 				partyIsOver();
 			}
 		}
+		#end
 
 		if (SONG.song.toLowerCase() == 'nightmare-run' && !nmStairs && !iskinky)
 		{
