@@ -61,6 +61,9 @@ http-server -c-1
 This spins up a Node.js httpd which serves the files in your directory as
 static files accessible from http://localhost:8080
 
+Go to your web browser, paste in http://localhost:8080 into your search bar, press enter, and enjoy playing Indie Cross.
+And also once your done, press CTRL+C to close the web server.
+
 Note that if you get an error: http-server is not recognized as a command or external command or if the same thing happens with npm, do the following.
 add
 ```
