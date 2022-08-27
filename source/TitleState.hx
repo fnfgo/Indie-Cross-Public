@@ -138,12 +138,6 @@ class TitleState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if (FlxG.keys.justPressed.I && FlxG.keys.pressed.CONTROL && FlxG.keys.pressed.SHIFT)
-		{
-			MainMenuState.showCredits = true;
-			FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
-		}
-
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.R)
 		{
 			restart();
