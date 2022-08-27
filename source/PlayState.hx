@@ -4721,22 +4721,6 @@ class PlayState extends MusicBeatState
 					spr.visible = false;
 				});
 			}
-
-			/*if (PlayState.SONG.song.toLowerCase() == 'bad-time'
-					|| PlayState.SONG.song.toLowerCase() == 'devils-gambit'
-					|| PlayState.SONG.song.toLowerCase() == 'despair')
-				{
-					altPlayerStrums.forEach(function(spr:FlxSprite)
-					{
-						spr.visible = true;
-						spr.alpha = 1.0;
-					});
-					altCpuStrums.forEach(function(spr:FlxSprite)
-					{
-						spr.visible = true;
-						spr.alpha = 1.0;
-					});
-			}*/
 		}
 	}
 
@@ -11149,78 +11133,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function nightmareBendyJump(dur:Int = 3)
-	{
-		var onRightSide:Bool = false;
-		dad.preventDanceConstant = true;
-		dad.playAnim('leap', true);
-		FlxG.sound.play(Paths.sound('nmbendy_jump', 'bendy'));
-		jumpingBendyTimer1 = new FlxTimer().start(0.5, function(tmr:FlxTimer)
-		{
-			FlxG.camera.shake(0.20, 0.05);
-			var blast:FlxSprite = new FlxSprite(dad.x - 700, dad.y);
-			blast.frames = Paths.getSparrowAtlas('characters/AAAAAAAAAAAAAAAAAA');
-			blast.animation.addByPrefix('play', 'JumpEffect instance 1', 25, false);
-			blast.setGraphicSize(Std.int(blast.width * 3));
-			blast.animation.play('play');
-			add(blast);
-			blast.animation.finishCallback = function(name:String)
-			{
-				remove(blast);
-				bfCanMove = true;
-			}
-		});
-
-		jumpingBendyTimer2 = new FlxTimer().start(dur + 0.9, function(tmr:FlxTimer)
-		{
-			if (FlxG.random.bool(50)) // RIGHT
-			{
-				dad.x = 1390;
-				dad.flipX = true;
-				onRightSide = true;
-			}
-			else // LEFT
-			{
-				dad.x = -300;
-				dad.flipX = false;
-			}
-		});
-
-		jumpingBendyTimer3 = new FlxTimer().start(dur + 1, function(tmr:FlxTimer)
-		{
-			var warning:FlxSprite = new FlxSprite(dad.x, dad.y);
-			warning.frames = Paths.getSparrowAtlas('characters/AAAAAAAAAAAAAAAAAA');
-			warning.animation.addByPrefix('warn', 'Warning instance 1', 25, false);
-			warning.setGraphicSize(Std.int(warning.width * 1.5));
-			warning.animation.play('warn');
-			add(warning);
-			warning.animation.finishCallback = function(name:String)
-			{
-				remove(warning);
-			}
-		});
-
-		jumpingBendyTimer4 = new FlxTimer().start(dur + 2, function(tmr:FlxTimer)
-		{
-			dad.playAnim('fall', true, false, 0, true);
-			FlxG.sound.play(Paths.sound('nmbendy_land', 'bendy'));
-			new FlxTimer().start(0.10, function(tmr:FlxTimer) // death check
-			{
-				bfCanMove = false;
-				if (onRightSide == bfOnRight)
-				{
-					playerDie();
-				}
-
-				FlxG.camera.shake(0.20, 0.05);
-			});
-			new FlxTimer().start(0.66, function(tmr:FlxTimer)
-			{
-				dad.preventDanceConstant = false;
-			});
-		});
-	}
-
 	function startCupheadShoot()
 	{
 		if (!dad.animation.curAnim.name.contains('hit'))
@@ -12054,37 +11966,8 @@ class PlayState extends MusicBeatState
 		}
 		paused = true;
 
-		/*if (gameVideos != null)
-		{
-			for (i in 0...gameVideos.length)
-			{
-				gameVideos[i].bitmap.pause();
-			}
-		}*/
-
 		openSubState(new PauseSubState());
 	}
-
-	/*function antiCheat()
-	{
-		if (!FlxG.fullscreen)
-		{
-			var output = new Process("tasklist", []).stdout.readAll().toString().toLowerCase();
-			var blockedShit:Array<String> = ['fnfbot.exe', 'fnfbot20.exe', 'form1.exe', 'cheatengine.exe']; //people managed to break the game with cheat engine lmfao
-
-			trace('checking for fnf bot');
-
-			for (i in 0...blockedShit.length)
-			{
-				if (output.contains(blockedShit[i]))
-				{
-					trace(blockedShit[i]);
-					throw new ValueException("Don't Cheat :)");
-					// System.exit(0);
-				}
-			}
-		}
-	}*/
 
 	function getCamOffsets()
 	{
