@@ -158,16 +158,7 @@ class GameOverSubstate extends MusicBeatSubstate
 					};
 				}
 			case 'gose':
-				vidSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
-				add(vidSpr);
-
-				var video:VideoHandler = new VideoHandler();
-				video.allowSkip = false;
-				video.finishCallback = function()
-				{
-					throw new ValueException('Honk');
-				};
-				video.playMP4(Paths.video('gose'), false, vidSpr, false, true, false);
+				throw new ValueException('Honk');
 		}
 
 		FlxG.camera.scroll.set();
@@ -176,8 +167,6 @@ class GameOverSubstate extends MusicBeatSubstate
 	}
 
 	var dialogueOver:Bool = true;
-
-	var vidSpr:FlxSprite;
 
 	override function update(elapsed:Float)
 	{

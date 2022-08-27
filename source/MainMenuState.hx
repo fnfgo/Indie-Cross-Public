@@ -270,8 +270,6 @@ class MainMenuState extends MusicBeatState
 
 	public static var showKeybindsMenu:Bool = false;
 
-	public static var showCredits:Bool = false;
-
 	var skipText:FlxText;
 	var videoDone:Bool = true;
 	var vidSpr:FlxSprite;
@@ -381,43 +379,6 @@ class MainMenuState extends MusicBeatState
 
 		generateButtons(270, 100);
 		changeSelection(curSelected);
-
-		if (showCredits)
-		{
-			videoDone = false;
-
-			vidSpr = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
-			add(vidSpr);
-
-			if (FlxG.sound.music != null)
-				FlxG.sound.music.stop();
-
-			skipText = new FlxText(0, FlxG.height - 26, 0, "Press Enter to skip", 18);
-			skipText.alpha = 0;
-			skipText.setFormat(HelperFunctions.returnMenuFont(skipText), 18, FlxColor.WHITE, RIGHT);
-			skipText.scrollFactor.set();
-			skipText.screenCenter(X);
-
-			var video:VideoHandler = new VideoHandler(); // it plays but it doesn't show???
-			video.allowSkip = FlxG.save.data.seenCredits;
-			video.finishCallback = function()
-			{
-				FlxG.save.data.seenCredits = true;
-				FlxG.save.flush();
-				videoDone = true;
-				vidSpr.visible = false;
-				showCredits = false;
-				remove(skipText);
-			};
-			video.playMP4(Paths.video('credits'), false, vidSpr, false, true, false);
-
-			if (video.allowSkip)
-			{
-				add(skipText);
-				FlxTween.tween(skipText, {alpha: 1}, 1, {ease: FlxEase.quadIn});
-				FlxTween.tween(skipText, {alpha: 0}, 1, {ease: FlxEase.quadIn, startDelay: 4});
-			}
-		}
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
