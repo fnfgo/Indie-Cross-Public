@@ -314,7 +314,21 @@ class CreditsMenu extends MusicBeatState
 			"Charter", 
 			"0", 
 			"https://twitter.com/cval_brown"
-		]
+		],
+		[
+			'MemeHoovy',
+			"Hey Vsauce michael here, how fast can you run?",
+			"HTML5 Porter",
+			"3",
+			"https://twitter.com/meme_hoovy"
+		],
+		[
+			'LeviXDD',
+			"birb",
+			"HTML5 Porter",
+			"1",
+			"https://github.com/LEVIXDDLMAO"
+		],
 	];
 
 	var specialThanksMain:String = 
@@ -681,6 +695,10 @@ class CreditsMenu extends MusicBeatState
 				bg.loadGraphic(bgAssets[2], false, bg.frameWidth, bg.frameHeight, true);
 				credRoleText.color = FlxColor.fromRGB(82, 119, 255);
 				credRoleText.text = 'Musician';
+			case 'HTML5 Porter':
+				bg.loadGraphic(bgAssets[2], false, bg.frameWidth, bg.frameHeight, true);
+				credRoleText.color = FlxColor.fromRGB(82, 119, 255);
+				credRoleText.text = 'HTML5 Porter';
 		}
 
 		switch (credits[sel][0])
@@ -696,6 +714,13 @@ class CreditsMenu extends MusicBeatState
 				credLargeName.text = 'RiverOaken';
 			case 'Gedehari':
 				credLargeName.text = 'Sqirra-RNG';
+			case 'MemeHoovy':
+				credLargeName.setFormat(Paths.font("Krabby Patty.ttf"), 64, FlxColor.WHITE);
+				credQuoteText.setFormat(Paths.font("Krabby Patty.ttf"), 28, FlxColor.WHITE);
+				credRoleText.font = Paths.font("Krabby Patty.ttf");
+				credLargeName.text = 'MemeHoovy';
+				credRoleText.offset.x = 5; // wtf i hate offsets
+				credLargeName.offset.y = 10; // wtf i hate offsets				
 			default:
 				credRoleText.offset.x = 0;
 				credLargeName.offset.x = 0;
