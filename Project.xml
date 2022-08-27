@@ -26,7 +26,6 @@
 	<library name="bendy"   preload="true" />
 	<library name="sans"   preload="true" />
 	<library name="cup"   preload="true" />
-	<library name="customSkins"   preload="true" />
 	<library name="achievements"   preload="true" />
 	
 	<assets path="assets/preload" rename="assets"/>
