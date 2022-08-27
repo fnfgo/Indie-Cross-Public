@@ -39,7 +39,6 @@
 	<assets path="assets/achievements"  library="achievements"/>
 	<assets path="assets/notes" embed="true" library="notes" if="windows || html5"/>
 	<assets path="assets/notes" embed="false" library="notes" if="linux"/>
-	<assets path="assets/videos"/>
 	<assets path="assets/fonts" embed='true' if="windows || html5"/>
 	<assets path="assets/fonts" embed='false' if="linux"/>
 	
